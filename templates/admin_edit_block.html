@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}Редактирование блока{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+{% endblock %}
+
+{% block content %}
+<main class="admin-page">
+    <section class="admin-head">
+        <h1>Редактирование блока</h1>
+        <a href="{{ url_for('admin_dashboard') }}">Назад</a>
+    </section>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+            <p class="flash {{ category }}">{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <section class="panel">
+        <form method="post" enctype="multipart/form-data" class="edit-form">
+            <label for="title">Заголовок</label>
+            <input id="title" name="title" value="{{ block.title }}" required>
+
+            <label for="body">Текст</label>
+            <textarea id="body" name="body" rows="5" required>{{ block.body }}</textarea>
+
+            <label for="image_url">Ссылка на изображение</label>
+            <input id="image_url" name="image_url" value="{{ block.image_url or '' }}">
+
+            <label for="image_file">Или загрузить файл</label>
+            <input id="image_file" name="image_file" type="file" accept=".png,.jpg,.jpeg,.webp,.gif,.svg">
+
+            <label for="button_text">Текст кнопки</label>
+            <input id="button_text" name="button_text" value="{{ block.button_text or '' }}">
+
+            <label for="button_url">Ссылка кнопки</label>
+            <input id="button_url" name="button_url" value="{{ block.button_url or '' }}">
+
+            <label class="checkbox">
+                <input type="checkbox" name="is_active" {% if block.is_active %}checked{% endif %}>
+                Показывать блок на странице
+            </label>
+
+            <button type="submit">Сохранить блок</button>
+        </form>
+    </section>
+</main>
+{% endblock %}
