@@ -25,6 +25,12 @@
         </nav>
         <a class="header-button" href="admin.html">Админка</a>
     </div>
+    <div class="container subnav">
+        <a href="#services">Организациям</a>
+        <a href="#services">Иностранным гражданам</a>
+        <a href="#online">Госуслуги</a>
+        <a href="#contact">Контакты</a>
+    </div>
 </header>
 
 <main class="page">
@@ -35,15 +41,23 @@
                 <div class="hero-content">
                     <h1 id="hero-title"></h1>
                     <p id="hero-body"></p>
+                    <div class="hero-meta">
+                        <span>Работаем официально</span>
+                        <span>Поддержка 24/7</span>
+                        <span>Без скрытых платежей</span>
+                    </div>
                     <a id="hero-button" class="button button-red" href="#contact">Оставить заявку</a>
                 </div>
             </section>
 
             <section class="benefits" id="benefits-list"></section>
 
-            <section id="services-list" class="cards"></section>
+            <section class="section-card">
+                <h2 class="section-heading">Направления услуг</h2>
+                <section id="services-list" class="cards"></section>
+            </section>
 
-            <section id="online" class="online-services">
+            <section id="online" class="online-services section-card">
                 <h2 id="online-title"></h2>
                 <div class="online-grid" id="online-links"></div>
             </section>
