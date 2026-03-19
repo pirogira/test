@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Админка контента</title>
+    <link rel="stylesheet" href="static/css/admin-panel.css">
+</head>
+<body>
+<main class="admin-page">
+    <section class="admin-head">
+        <h1>Админка (GitHub Pages)</h1>
+        <a href="index.html">Открыть сайт</a>
+    </section>
+
+    <p class="notice">
+        Изменения сохраняются в LocalStorage этого браузера. Для переноса на другой компьютер
+        используйте экспорт/импорт JSON ниже.
+    </p>
+
+    <section class="panel">
+        <h2>SEO</h2>
+        <label for="seo-title">Title</label>
+        <input id="seo-title" type="text">
+        <label for="seo-description">Meta description</label>
+        <textarea id="seo-description" rows="3"></textarea>
+    </section>
+
+    <section class="panel">
+        <h2>Topbar и Hero</h2>
+        <label for="topbar-time">Время работы</label>
+        <input id="topbar-time" type="text">
+        <label for="topbar-phone">Телефон в topbar</label>
+        <input id="topbar-phone" type="text">
+
+        <label for="hero-title">Hero заголовок</label>
+        <input id="hero-title" type="text">
+        <label for="hero-body">Hero текст</label>
+        <textarea id="hero-body" rows="3"></textarea>
+        <label for="hero-image">Hero изображение (URL)</label>
+        <input id="hero-image" type="text">
+        <label for="hero-button-text">Hero кнопка текст</label>
+        <input id="hero-button-text" type="text">
+        <label for="hero-button-url">Hero кнопка ссылка</label>
+        <input id="hero-button-url" type="text">
+    </section>
+
+    <section class="panel">
+        <h2>Преимущества</h2>
+        <p class="hint">Один пункт на строку.</p>
+        <textarea id="benefits" rows="5"></textarea>
+    </section>
+
+    <section class="panel">
+        <h2>Карточки услуг</h2>
+        <p class="hint">Меняйте порядок блоков кнопками вверх/вниз.</p>
+        <div id="services-editor" class="stack"></div>
+        <button id="add-service" class="secondary" type="button">Добавить карточку</button>
+    </section>
+
+    <section class="panel">
+        <h2>Онлайн сервисы</h2>
+        <label for="online-title">Заголовок секции</label>
+        <input id="online-title" type="text">
+        <p class="hint">Ссылки в формате: Текст|URL, одна на строку.</p>
+        <textarea id="online-links" rows="8"></textarea>
+    </section>
+
+    <section class="panel">
+        <h2>Контактная плашка</h2>
+        <label for="cta-title">Заголовок</label>
+        <input id="cta-title" type="text">
+        <label for="cta-body">Текст</label>
+        <textarea id="cta-body" rows="3"></textarea>
+        <label for="cta-button-text">Кнопка текст</label>
+        <input id="cta-button-text" type="text">
+        <label for="cta-button-url">Кнопка ссылка</label>
+        <input id="cta-button-url" type="text">
+    </section>
+
+    <section class="panel">
+        <h2>Сайдбар</h2>
+        <label for="side-1-title">Карточка 1 заголовок</label>
+        <input id="side-1-title" type="text">
+        <label for="side-1-body">Карточка 1 текст</label>
+        <textarea id="side-1-body" rows="3"></textarea>
+        <label for="side-1-button-text">Карточка 1 кнопка текст</label>
+        <input id="side-1-button-text" type="text">
+        <label for="side-1-button-url">Карточка 1 кнопка ссылка</label>
+        <input id="side-1-button-url" type="text">
+
+        <label for="side-2-title">Карточка 2 заголовок</label>
+        <input id="side-2-title" type="text">
+        <label for="side-2-links">Карточка 2 ссылки (Текст|URL, строками)</label>
+        <textarea id="side-2-links" rows="5"></textarea>
+
+        <label for="side-3-title">Карточка 3 заголовок</label>
+        <input id="side-3-title" type="text">
+        <label for="side-3-address">Адрес</label>
+        <input id="side-3-address" type="text">
+        <label for="side-3-phone">Телефон</label>
+        <input id="side-3-phone" type="text">
+        <label for="side-3-email">Email</label>
+        <input id="side-3-email" type="text">
+    </section>
+
+    <section class="panel actions">
+        <button id="save-content" type="button">Сохранить</button>
+        <button id="reset-content" class="secondary" type="button">Сбросить к дефолту</button>
+        <button id="export-content" class="secondary" type="button">Экспорт JSON</button>
+        <label class="upload-label">
+            Импорт JSON
+            <input id="import-content" type="file" accept="application/json">
+        </label>
+        <span id="status"></span>
+    </section>
+</main>
+
+<script src="static/js/admin-panel.js"></script>
+</body>
+</html>

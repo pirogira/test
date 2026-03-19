@@ -1,0 +1,154 @@
+:root {
+    --bg: #0f172a;
+    --panel: #111827;
+    --text: #e5e7eb;
+    --muted: #9ca3af;
+    --accent: #3b82f6;
+    --border: #1f2937;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, "Segoe UI", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+}
+
+a {
+    color: #bfdbfe;
+}
+
+.admin-page {
+    width: min(980px, 94vw);
+    margin: 0 auto;
+    padding: 20px 0 36px;
+}
+
+.admin-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.notice {
+    margin: 0 0 14px;
+    color: var(--muted);
+}
+
+.panel {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 16px;
+}
+
+.panel + .panel {
+    margin-top: 12px;
+}
+
+label {
+    display: block;
+    margin: 10px 0 6px;
+    color: var(--muted);
+    font-size: 0.92rem;
+}
+
+input,
+textarea,
+button {
+    width: 100%;
+    font: inherit;
+    background: #0b1220;
+    color: var(--text);
+    border: 1px solid #334155;
+    border-radius: 10px;
+    padding: 10px 12px;
+}
+
+button {
+    border: 0;
+    background: var(--accent);
+    color: #fff;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.secondary {
+    background: #334155;
+}
+
+.hint {
+    margin: 4px 0 10px;
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+.stack {
+    display: grid;
+    gap: 10px;
+}
+
+.service-item {
+    border: 1px solid #2c3b52;
+    border-radius: 10px;
+    padding: 10px;
+    display: grid;
+    gap: 8px;
+}
+
+.service-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--muted);
+    font-size: 0.88rem;
+}
+
+.service-actions {
+    display: flex;
+    gap: 6px;
+}
+
+.service-actions button {
+    width: auto;
+    padding: 6px 10px;
+    background: #475569;
+}
+
+.actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+}
+
+.actions button,
+.upload-label {
+    width: auto;
+}
+
+.upload-label {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 12px;
+    border-radius: 10px;
+    background: #334155;
+    cursor: pointer;
+}
+
+.upload-label input {
+    display: none;
+}
+
+#status {
+    color: #86efac;
+    font-size: 0.9rem;
+}

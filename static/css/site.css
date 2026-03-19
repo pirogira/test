@@ -71,7 +71,6 @@ a {
 .logo {
     font-weight: 700;
     color: var(--blue);
-    letter-spacing: 0.2px;
 }
 
 .logo span {

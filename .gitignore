@@ -5,3 +5,4 @@ __pycache__/
 site.db
 static/uploads/*
 !static/uploads/.gitkeep
+script.py
