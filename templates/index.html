@@ -5,63 +5,141 @@
 {% endblock %}
 
 {% block content %}
-<header class="site-header">
-    <div class="container header-inner">
-        <a class="logo" href="/">Landing CMS</a>
-        <nav class="nav">
-            <a href="#features">Возможности</a>
-            <a href="#contact">Контакты</a>
-            <a class="admin-link" href="{{ url_for('admin_login') }}">Админка</a>
-        </nav>
+{% set hero = blocks|selectattr("key", "equalto", "hero")|list|first %}
+{% set feature_blocks = blocks|selectattr("key", "equalto", "feature")|list %}
+{% set cta = blocks|selectattr("key", "equalto", "cta")|list|first %}
+
+<header class="topbar">
+    <div class="container topbar-inner">
+        <span>Пн-Пт: 9:00-18:00</span>
+        <span>+7 (495) 100-24-24</span>
     </div>
 </header>
 
-<main>
-    {% for block in blocks %}
-        {% if block.key == "hero" %}
-        <section class="hero section">
-            <div class="container hero-grid">
-                <div class="hero-copy">
-                    <h1>{{ block.title }}</h1>
-                    <p>{{ block.body }}</p>
-                    {% if block.button_text and block.button_url %}
-                    <a class="button" href="{{ block.button_url }}">{{ block.button_text }}</a>
+<header class="site-header">
+    <div class="container header-main">
+        <a class="logo" href="/">МИГРАЦИЯ <span>24</span></a>
+        <nav class="nav">
+            <a href="#services">Услуги</a>
+            <a href="#online">Сервисы</a>
+            <a href="#contact">Контакты</a>
+        </nav>
+        <a class="header-button" href="{{ url_for('admin_login') }}">Админка</a>
+    </div>
+</header>
+
+<main class="page">
+    <div class="container layout">
+        <div class="content-column">
+            <section class="hero">
+                {% if hero and hero.image_url %}
+                <img class="hero-image" src="{{ hero.image_url }}" alt="{{ hero.title }}">
+                {% endif %}
+                <div class="hero-content">
+                    <h1>{{ hero.title if hero else "Миграционные услуги в Москве и Московской области" }}</h1>
+                    <p>{{ hero.body if hero else "Помогаем иностранным гражданам с оформлением документов и консультациями." }}</p>
+                    {% if hero and hero.button_text and hero.button_url %}
+                    <a class="button button-red" href="{{ hero.button_url }}">{{ hero.button_text }}</a>
                     {% endif %}
                 </div>
-                {% if block.image_url %}
-                <img class="hero-image" src="{{ block.image_url }}" alt="{{ block.title }}">
-                {% endif %}
-            </div>
-        </section>
-        {% elif block.key == "feature" %}
-        <section id="features" class="feature section">
-            <div class="container feature-grid">
-                {% if block.image_url %}
-                <img class="feature-image" src="{{ block.image_url }}" alt="{{ block.title }}">
-                {% endif %}
-                <div class="feature-copy">
-                    <h2>{{ block.title }}</h2>
-                    <p>{{ block.body }}</p>
+            </section>
+
+            <section class="benefits">
+                <article class="benefit-item">
+                    <span class="benefit-icon">✓</span>
+                    <p>Штатные специалисты</p>
+                </article>
+                <article class="benefit-item">
+                    <span class="benefit-icon">✓</span>
+                    <p>Бесплатная консультация</p>
+                </article>
+                <article class="benefit-item">
+                    <span class="benefit-icon">✓</span>
+                    <p>Гарантия оформления</p>
+                </article>
+            </section>
+
+            <section id="services" class="cards">
+                {% for feature in feature_blocks %}
+                <article class="service-card">
+                    <h2>{{ feature.title }}</h2>
+                    <p>{{ feature.body }}</p>
+                    <a class="button button-blue" href="#contact">Узнать подробнее</a>
+                </article>
+                {% endfor %}
+            </section>
+
+            <section id="online" class="online-services">
+                <h2>Государственные онлайн сервисы для иностранных граждан</h2>
+                <div class="online-grid">
+                    <a href="#">Проверить готовность документов</a>
+                    <a href="#">Подать обращение</a>
+                    <a href="#">Оформить заявление</a>
+                    <a href="#">Проверить запрет на въезд</a>
+                    <a href="#">Записаться на приём</a>
+                    <a href="#">Проверить статус патента</a>
+                    <a href="#">Проверить основания для въезда</a>
+                    <a href="#">Узнать адрес подразделения</a>
                 </div>
-            </div>
-        </section>
-        {% elif block.key == "cta" %}
-        <section id="contact" class="cta section">
-            <div class="container cta-card">
-                <h2>{{ block.title }}</h2>
-                <p>{{ block.body }}</p>
-                {% if block.button_text and block.button_url %}
-                <a class="button button-light" href="{{ block.button_url }}">{{ block.button_text }}</a>
+            </section>
+
+            <section id="contact" class="contact-strip">
+                <div>
+                    <h3>{{ cta.title if cta else "Нужна консультация?" }}</h3>
+                    <p>{{ cta.body if cta else "Оставьте заявку и мы перезвоним в течение 15 минут." }}</p>
+                </div>
+                {% if cta and cta.button_text and cta.button_url %}
+                <a class="button button-red" href="{{ cta.button_url }}">{{ cta.button_text }}</a>
                 {% endif %}
-            </div>
-        </section>
-        {% endif %}
-    {% endfor %}
+            </section>
+        </div>
+
+        <aside class="sidebar">
+            <article class="side-card">
+                <h3>Миграционные услуги</h3>
+                <p>Оформление РВП, ВНЖ, гражданства и патента.</p>
+                <a class="button button-red" href="#contact">Оставить заявку</a>
+            </article>
+            <article class="side-card">
+                <h3>Навигация</h3>
+                <ul>
+                    <li><a href="#services">Организациям</a></li>
+                    <li><a href="#services">Иностранным гражданам</a></li>
+                    <li><a href="#online">Онлайн сервисы</a></li>
+                </ul>
+            </article>
+            <article class="side-card">
+                <h3>Контакты</h3>
+                <p>г. Москва, ул. Примерная, 24</p>
+                <p>+7 (495) 100-24-24</p>
+                <p>mail@example.ru</p>
+            </article>
+        </aside>
+    </div>
 </main>
 
 <footer class="site-footer">
-    <div class="container">
-        <p>© {{ settings.page_title }}</p>
+    <div class="container footer-grid">
+        <div>
+            <p class="footer-logo">МИГРАЦИЯ 24</p>
+            <p>© {{ settings.page_title }}</p>
+        </div>
+        <div>
+            <p class="footer-title">Разделы</p>
+            <a href="#services">Услуги</a>
+            <a href="#online">Онлайн сервисы</a>
+            <a href="#contact">Контакты</a>
+        </div>
+        <div>
+            <p class="footer-title">Для клиентов</p>
+            <a href="#">Памятка</a>
+            <a href="#">Документы</a>
+            <a href="#">Поддержка</a>
+        </div>
+        <div>
+            <p class="footer-title">Горячая линия</p>
+            <a class="button button-red" href="#contact">Оставить заявку</a>
+        </div>
     </div>
 </footer>
 {% endblock %}
